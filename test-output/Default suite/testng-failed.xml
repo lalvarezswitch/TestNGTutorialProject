@@ -5,7 +5,9 @@
     <classes>
       <class name="tests.FirstTests">
         <methods>
-          <include name="miCuartoTest"/>
+          <include name="setUp"/>
+          <include name="classIsNullTest"/>
+          <include name="miPrimerTest"/>
         </methods>
       </class> <!-- tests.FirstTests -->
     </classes>
