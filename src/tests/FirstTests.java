@@ -44,7 +44,7 @@ public class FirstTests {
 	@Test
 	public void miSegundoTest() {
 		//Assert.assertTrue(numero2-5 == numero1);
-		Assert.assertTrue(numerosCodigo[0] > 0);
+		Assert.assertTrue(numerosCodigo[0] > 0, "El primero debe ser mayor a cero");
 		int i = 1;
 		int j = 2;
 		Assert.assertFalse(i==j);
