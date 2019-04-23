@@ -1,7 +1,11 @@
 package tests;
 
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import code.RandomThings;
@@ -11,6 +15,23 @@ public class FirstTests {
 	//private int numero1;
 	//private int numero2;
 	private int[] numerosCodigo;
+	
+	@BeforeTest
+	public void before() {
+		System.out.println("------------------------------------------------");
+		System.out.println("Ejecutando precondiciones para correr los tests...");
+		System.out.println("Creando la base de datos...");
+		System.out.println("Creando entorno...");
+		System.out.println("------------------------------------------------");		
+	}
+	
+	@AfterTest
+	public void after() {
+		System.out.println("------------------------------------------------");
+		System.out.println("Eliminando base de datos...");
+		System.out.println("Eliminando entorno...");
+		System.out.println("------------------------------------------------");
+	}
 	
 	@BeforeMethod
 	public void setUp() {
@@ -23,7 +44,7 @@ public class FirstTests {
 		System.out.println(numerosCodigo[1]);
 	}
 	
-	@Test
+	@Test(description = "Verificar que el primer nro sea mayor que el segundo")
 	public void classIsNullTest() {
 		//Assert.assertTrue(numero1+5 == numero2);
 		Assert.assertTrue(numerosCodigo[0] >= numerosCodigo[1], "Se espera que el primero sea mayor al segundo");
@@ -33,7 +54,7 @@ public class FirstTests {
 		Assert.assertNotNull(persona1);
 	}
 	
-	@Test
+	@Test(description = "Verificar que ambos nrs. sean iguales")
 	public void miPrimerTest() {
 		//Assert.assertTrue(numero2 == numero1+5);
 		Assert.assertTrue(numerosCodigo[0] == numerosCodigo[1], "Se esperan los dos iguales");
@@ -41,7 +62,7 @@ public class FirstTests {
 		Assert.assertTrue('A'=='A');
 	}
 	
-	@Test
+	@Test(description = "Verificar que el primer nro sea mayor a cero")
 	public void miSegundoTest() {
 		//Assert.assertTrue(numero2-5 == numero1);
 		Assert.assertTrue(numerosCodigo[0] > 0, "El primero debe ser mayor a cero");
@@ -50,17 +71,10 @@ public class FirstTests {
 		Assert.assertFalse(i==j);
 	}
 	
-	@Test
-	public void miTercerTest() {
-		//Assert.assertTrue(numero2-10 == numero1-5);
-		Assert.assertEquals(5, 5);
-		Assert.assertEquals('C', 'C');
-	}
-	
-	@Test
-	public void miCuartoTest() {
-		//Assert.assertTrue(numero2-10 == numero1-5);
-		Assert.assertNotEquals(4, 8);
-		Assert.assertNotEquals('4', 'H');
+	@AfterMethod
+	public void tearDown(ITestResult result) {
+		System.out.println("El test "+ result.getMethod().getDescription()+ " resultó: "+result.getStatus());
+		System.out.println("Ejecutando las postcondiciones...");
+		System.out.println("Test case finalizado");
 	}
 }

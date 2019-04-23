@@ -5,6 +5,7 @@
     <classes>
       <class name="tests.FirstTests">
         <methods>
+          <include name="tearDown"/>
           <include name="setUp"/>
           <include name="classIsNullTest"/>
           <include name="miPrimerTest"/>

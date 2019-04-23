@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite de pruebas tutorial">
+	<test name="mi primer set">
+		<classes>
+			<class name="tests.FirstTests"/>
+			<class name="tests.SecondTests"/>
+		</classes>
+	</test>
+</suite>
